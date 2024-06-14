@@ -6,7 +6,7 @@ const App = () => {
     return (
         <div>
             <NavBar />
-            {/* Otros componentes o contenido de tu aplicación */}
+         
         </div>
     );
 };
