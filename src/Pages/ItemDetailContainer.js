@@ -1,7 +1,6 @@
-// src/components/ItemDetailContainer.js
-
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import ItemDetail from '../components/ItemDetail';
 
 const ItemDetailContainer = () => {
   const { id } = useParams();
@@ -18,20 +17,14 @@ const ItemDetailContainer = () => {
     fetchItem();
   }, [id]);
 
-  if (!item) return <p>Cargando...</p>;
+  if (!item) return <p>Cargando..</p>;
 
   return (
-    <div>
-      <h1>{item.name}</h1>
-      <p>ID del Producto: {item.id}</p>
-      <p>{item.description}</p>
-    </div>
+    <ItemDetail item={item} />
   );
 }
 
 export default ItemDetailContainer;
-
-
 
 
 
