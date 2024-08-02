@@ -1,16 +1,28 @@
-import React from 'react';
-import ItemList from '../components/ItemList'; 
+// src/components/ItemListContainer.js
+
+import React, { useEffect, useState } from 'react';
+import { collection, getDocs } from 'firebase/firestore';
+import ItemList from './ItemList';
+import { db } from './firebase';
+
 const ItemListContainer = () => {
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    const fetchItems = async () => {
+      const querySnapshot = await getDocs(collection(db, 'items'));
+      const itemsData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      setItems(itemsData);
+    };
+
+    fetchItems();
+  }, []);
+
   return (
     <div>
-      <h1> Castillo1</h1> 
-      <h1> Castillo2</h1>
-      <h1> Granja1</h1>
-
-
-      <ItemList />
+      <ItemList items={items} />
     </div>
   );
-}
+};
 
 export default ItemListContainer;
