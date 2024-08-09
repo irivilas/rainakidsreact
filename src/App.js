@@ -4,6 +4,8 @@ import NavBar from './components/NavBar';
 import ItemListContainer from './Pages/ItemListContainer';
 import ItemDetailContainer from './Pages/ItemDetailContainer';
 import Checkout from './Pages/Checkout';
+import { CartContext } from './context/cartContext';
+
 
 const App = () => {
   return (
