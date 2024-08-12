@@ -8,6 +8,11 @@ const Checkout = () => {
   const { cart, getTotalPrice, clearCart } = useContext(CartContext);
 
   const handleCheckout = async () => {
+    if (cart.length === 0) {
+      alert("El carrito está vacío. Por favor, agrega productos antes de continuar.");
+      return;
+    }
+
     const order = {
       items: cart.map((item) => ({
         id: item.id,
@@ -20,10 +25,11 @@ const Checkout = () => {
 
     try {
       const docRef = await addDoc(collection(db, "pedidos"), order);
-      alert(`Orden! Order ID: ${docRef.id}`);
+      alert(`¡Compra realizada con éxito! ID de la orden: ${docRef.id}`);
       clearCart(); 
     } catch (e) {
-      console.error("Error: ", e);
+      console.error("Error al realizar la compra: ", e);
+      alert("Hubo un error al procesar tu compra. Por favor, intenta nuevamente.");
     }
   };
 
@@ -34,7 +40,7 @@ const Checkout = () => {
         items: cart,
         total: getTotalPrice(),
       }} />
-      <button onClick={handleCheckout}>Detalleorden</button>
+      <button onClick={handleCheckout}>Comprar</button>
     </div>
   );
 }
