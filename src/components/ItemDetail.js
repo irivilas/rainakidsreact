@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { CartContext } from '../context/CartContext';
+import { CartContext } from '../context/CartContex';
 import ItemQuantitySelector from './ItemQuantitySelector';
 import AddItemButton from './AddItemButton';
 
