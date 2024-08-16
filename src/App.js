@@ -5,6 +5,7 @@ import ItemListContainer from './Pages/ItemListContainer';
 import ItemDetailContainer from './Pages/ItemDetailContainer';
 import Checkout from './Pages/Checkout';
 import { CartContext } from './context/cartContext';
+import Cart from './components/Cart';
 
 
 const App = () => {
@@ -16,6 +17,7 @@ const App = () => {
         <Route path="/category/:id" component={ItemListContainer} />
         <Route path="/item/:id" component={ItemDetailContainer} />
         <Route path="/checkout" component={Checkout} />
+        <Route path="/cart" element={<Cart />} /> {}
       </Switch>
     </Router>
   );

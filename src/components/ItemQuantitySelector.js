@@ -1,15 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const ItemQuantitySelector = () => {
-  const [quantity, setQuantity] = useState(1);
+const ItemQuantitySelector = ({ quantity, setQuantity }) => {
+  const increment = () => {
+    setQuantity(prev => prev + 1);
+  };
+
+  const decrement = () => {
+    if (quantity > 1) {
+      setQuantity(prev => prev - 1);
+    }
+  };
 
   return (
     <div>
-      <button onClick={() => setQuantity(quantity - 1)} disabled={quantity <= 1}>-</button>
+      <button onClick={decrement}>-</button>
       <span>{quantity}</span>
-      <button onClick={() => setQuantity(quantity + 1)}>+</button>
+      <button onClick={increment}>+</button>
     </div>
   );
-}
+};
 
 export default ItemQuantitySelector;

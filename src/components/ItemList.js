@@ -1,31 +1,22 @@
 import React from 'react';
-import { Nav } from 'react-bootstrap'; 
+import { Link } from 'react-router-dom'; 
+import Item from './item';
 
-const ItemList = () => {
-  const categories = [
-    { name: 'Castillo1', href: '#Castillo1' },
-    { name: 'Castillo2', href: '#castillo2' },
-    { name: 'Granja1', href: '#granja1' },
-  ];
-  const items = [
-    { id: 1, name: 'Castillo1' },
-    { id: 2, name: 'Castillo2' },
-    { id: 3, name: 'Granja1' },
-  ];
+const ItemList = ({ items }) => {
   return (
-    <>
-      {categories.map((category, index) => (
-        <Nav.Link key={index} as={Link} to={`/category/${category.name}`}>{category.name}</Nav.Link>
+    <div className="item-list">
+      {items.map((item) => (
+        <Item 
+          key={item.id} 
+          id={item.id} 
+          name={item.name}
+          castillos para niños={item.description} 
+          price={item.price}
+          imageUrl={item.imageUrl} 
+        />
       ))}
-      <ul>
-        {items.map((item) => (
-          <li key={item.id}>
-            <Link to={`/item/${item.id}`}>{item.name}</Link>
-          </li>
-        ))}
-      </ul>
-    </>
+    </div>
   );
-}
+};
 
 export default ItemList;

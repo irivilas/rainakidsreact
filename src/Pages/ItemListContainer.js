@@ -1,4 +1,3 @@
-// src/components/ItemListContainer.js
 
 import React, { useEffect, useState } from 'react';
 import { addDoc, collection, getDocs } from 'firebase/firestore';

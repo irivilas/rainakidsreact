@@ -1,13 +1,9 @@
 import React from 'react';
 
-const AddItemButton = () => {
-  const handleAddToCart = () => {
-    alert('Item added to cart!');
-  }
-
+const AddItemButton = ({ onAddToCart }) => {
   return (
-    <button onClick={handleAddToCart}>Agregar</button>
+    <button onClick={onAddToCart}>Agregar al Carrito</button>
   );
-}
+};
 
 export default AddItemButton;
